@@ -1,5 +1,5 @@
-# ITC PROJECT
-### web scrapping!
+# WEB SCRAPING PROJECT
+### ITC project
 
 In this project we retrive data from the website: 
 #### https://us.shein.com
