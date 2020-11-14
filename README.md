@@ -72,16 +72,6 @@ python main_scrap.py -p t -n 5 -c pink -$ 30
 > -c pink ---> for pink products (optional)
 > -$ 30 ---> for limit the max price to 30$ (optional)
 
-### Links
-
-You can use the links below to get to the GitHub page of the project, or to the submission on Hive:
-
-| Plugin | LINK |
-| ------ | ------ |
-| GitHub | https://github.com/danamakov/ITC_project.git |
-| Hive | https://lms.itc.tech/ |
-
-
 ### Team
 - Limor Nunu
 - Dana Makov
