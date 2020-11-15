@@ -36,7 +36,7 @@ tqdm==4.47.0
 # New Features!
 
   - Web scrap from your CLI.
-  - Choose your own preferences in scrapping.
+  - Choose your own preferences in scraping.
   - Add your products into database.
   - Get the price exchange rate (to NIS) for each product using API.
 
