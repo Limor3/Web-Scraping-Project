@@ -1,7 +1,7 @@
 # WEB SCRAPING PROJECT
 ### ITC project
 
-In this project we retrive data from the website: 
+In this project we retrived data from the website: 
 #### https://us.shein.com
 The website contains thousands of products, we decided to focus on dresses, tops and swimwear.
 For each product we gather data as: price, color, rating, style, etc...
@@ -33,27 +33,6 @@ wincertstore==0.2
 tqdm==4.47.0
 ```
 
-# New Features!
-
-  - Web scrap from your CLI.
-  - Choose your own preferences in scraping.
-  - Add your products into database.
-  - Get the price exchange rate (to NIS) for each product using API.
-
-### Tech
-
-The files and functions in it:
-
-* [main_scrap] - this is the file you want to use from your CLI.
-* [shein] - awesome web-scrap function that call to the product_info() function and return url according to the user's choice, number of products and section.
-* [html_soup] - with the function get_soup() it can return the html that you're looking for, as a text.
-* [data_product] - get the data for each product, using the soup_find(), find_all(), product_info() and get_data().
-* [exchange_api] - get price exchange rate by API.
-* [configuration] - including all the constants.
-* [sql_db_build] - create the database, this file used only once in order to create the DB. You should run this file before scraping.
-* [sql_insert_products] - insert all the product's info to the database.
-* [logging.log] - log file (contains errors and run info).
-
 ### How to run the program:
 Type in the terminal for some help with this web scarper:
 ```sh
@@ -70,6 +49,22 @@ python main_scrap.py -p t -n 5 -c pink -$ 30
 > -n 5 ---> for scrap 5 products
 > -c pink ---> for pink products (optional)
 > -$ 30 ---> for limit the max price to 30$ (optional)
+
+### Tech
+
+The files and functions in the project:
+
+* [main_scrap] - this is the file you want to use from your CLI (the file to run the program).
+* [shein] - awesome web-scrap function that call to the product_info() function and return url according to the user's choice, number of products and section.
+* [html_soup] - with the function get_soup() it can return the html that you're looking for, as a text.
+* [data_product] - get the data for each product, using the soup_find(), find_all(), product_info() and get_data().
+* [exchange_api] - get price exchange rate (to NIS) by API.
+* [configuration] - including all the constants.
+* [sql_db_build] - create the database, this file used only once in order to create the DB. You should run this file before scraping.
+* [sql_insert_products] - insert all the product's info to the database.
+* [logging.log] - log file (contains errors and run info).
+
+
 
 ### Team
 - Limor Nunu
