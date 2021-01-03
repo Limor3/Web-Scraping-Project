@@ -8,15 +8,15 @@ class Web_scrap:
     @staticmethod
     def web_scrap(section, number, price, color=None):
         """
+        This function use the html of the main page, get into the page of chosen product (DRESSES, TOPS,
+        SWIMWEAR) and the user's choices: number of products, max price and color of product.
+        This function create list of url for the product, and call the product_info() function in order to get the info
+         for each product in the list.
         :param section: the user's chosen product type (DRESSES, TOPS, SWIMWEAR)
         :param number: number of products to scrap
         :param price: max price of products
         :param color: color of products
         :return: url according to the user's choice, number of products and section
-        This function use the html of the main page, get into the page of chosen product (DRESSES, TOPS,
-        SWIMWEAR) and the user's choices: number of products, max price and color of product.
-        This function create list of url for the product, and call the product_info() function in order to get the info
-         for each product in the list.
         """
 
         # create html of main page
