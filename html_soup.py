@@ -1,7 +1,7 @@
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver as wb
 from bs4 import BeautifulSoup as bs
-from configuration import *
+import configuration as cfg
 import time
 import os
 
@@ -15,12 +15,12 @@ class Html_soup:
         """
 
         chrome_options = Options()
-        chrome_options.add_argument(HEADLESS)
+        chrome_options.add_argument(cfg.HEADLESS)
         # start web browser
-        browser = wb.Chrome(executable_path=os.path.abspath(CHROME_DRIVER), chrome_options=chrome_options)
+        browser = wb.Chrome(executable_path=os.path.abspath(cfg.CHROME_DRIVER), chrome_options=chrome_options)
         # get source code
         browser.get(url)
         html = browser.page_source
-        time.sleep(TIME_SLEEP)
+        time.sleep(cfg.TIME_SLEEP)
         browser.close()
-        return bs(html, HTML_PARSER)
+        return bs(html, cfg.HTML_PARSER)
