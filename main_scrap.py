@@ -12,7 +12,7 @@ Authors: Limor Nunu, Dana Makov
 from shein import Web_scrap
 from data_product import Data_product
 from sql_insert_products import Sql_insert_products
-from configuration import *
+import configuration as cfg
 import click
 import logging
 import datetime
@@ -41,15 +41,15 @@ def main(product, number, price, color):
     This program retrieves products information from the http://us.shein.com website.
     You can decide which products to scrap, how many products, color and max price.
     """
-    logging.basicConfig(format=LOGGING_FORMAT,
-                        filename=LOGGING_FILE_NAME, filemode=LOGGING_FILE_MODE)
+    logging.basicConfig(format=cfg.LOGGING_FORMAT,
+                        filename=cfg.LOGGING_FILE_NAME, filemode=cfg.LOGGING_FILE_MODE)
     logger = logging.getLogger()
-    logger.setLevel(logging.NOTSET)
-    logger.info(LOGGING_NEW_RUN.format(datetime.datetime.now()))
+    logger.setLevel(logging.cfg.NOTSET)
+    logger.info(cfg.LOGGING_NEW_RUN.format(datetime.datetime.now()))
 
     # setting the product type
     try:
-        if set(product).intersection(PRODUCT_SCRAP_OPT) == set(product):
+        if set(product).intersection(cfg.PRODUCT_SCRAP_OPT) == set(product):
             prod_to_scrap = product
         else:
             raise ValueError
@@ -61,25 +61,25 @@ def main(product, number, price, color):
 
     # setting the number of products to scrap
     try:
-        if 0 < int(number) < SCRAP_LIMIT:
+        if 0 < int(number) < cfg.SCRAP_LIMIT:
             n_to_scrap = int(number)
         else:
             raise ValueError
     except ValueError:
         logger.warning(f"There is a problem with user's input: number of products - '{number}'")
         print("You entered invalid value for the number of products to scrap.\n"
-              "please type positive integer less than {}".format(SCRAP_LIMIT))
+              "please type positive integer less than {}".format(cfg.SCRAP_LIMIT))
 
     # setting the color of product
     try:
-        if str(color).capitalize() in COLOR_SCRAP_OPT:
+        if str(color).capitalize() in cfg.COLOR_SCRAP_OPT:
             sort_color = str(color).capitalize()
         elif color is not None:
             raise ValueError
     except ValueError:
         logger.warning(f"There is a problem with user's input: color - '{color}'")
         print("You entered invalid value for the color.\n"
-              "please type color from the list: {}".format(COLOR_SCRAP_OPT))
+              "please type color from the list: {}".format(cfg.COLOR_SCRAP_OPT))
     else:
         sort_color = None
 
@@ -94,7 +94,7 @@ def main(product, number, price, color):
               "please type positive integer")
         logger.warning(f"There is a problem with user's input: max price - '{price}'")
 
-    section, num, price, color = SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color
+    section, num, price, color = cfg.SECTION_DICT[prod_to_scrap], n_to_scrap, sort_max_price, sort_color
     url_choice, number, section = Web_scrap.web_scrap(section, num, price, color)
     products_list, section = Data_product.product_info(url_choice, number, section)
     Sql_insert_products.sql_insert(products_list, section)
