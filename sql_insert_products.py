@@ -6,12 +6,12 @@ class Sql_insert_products:
     @staticmethod
     def insert_data(cur, con, col_dict, query, col_list):
         """
+        This function commit SQL query, and by that inserting data to table.
         :param cur: connection to cursor
         :param con: creating connection to sqlite
         :param col_dict: dict of product
         :param query: sql query
         :param col_list: list of columns names
-        This function commit SQL query, and by that inserting data to table.
         """
         values = [col_dict[val] if val in col_dict else UNKNOWN for val in col_list]
         values = tuple(values)
@@ -21,11 +21,11 @@ class Sql_insert_products:
     @staticmethod
     def update_fk(cur, con, query, item_id):
         """
+        This function commit SQL query, and by that updating the foreign key (fk) in the tables by the products table.
         :param cur: connection to cursor
         :param con: creating connection to sqlite
         :param query: sql query
         :param item_id: item ID of the product in the products table
-        This function commit SQL query, and by that updating the FK in the tables by the products table.
         """
         cur.execute(query, item_id)
         con.commit()
@@ -33,10 +33,10 @@ class Sql_insert_products:
     @staticmethod
     def sql_insert(data_list_products, section):
         """
+        The function insert the info of the products into the database, using the insert_data function.
         :param data_list_products: get list of dictionaries of all the info for each product.
                Every item in the list is for different product.
         :param section: the chosen section (dresses\tops\swimwear)
-        The function insert the info of the products into the database, using the insert_data function.
         """
         con = pymysql.connect(host=CONNECT_DB_HOST,
                               user=CONNECT_DB_USER,
